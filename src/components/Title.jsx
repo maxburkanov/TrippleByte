@@ -59,7 +59,6 @@ export default ({title, dragged, update}) => {
 
   const drag = (e) => { 
     e.dataTransfer.setData("Text", e.target.innerText );
-    e.dataTransfer.setData("Title", e.target.parentNode.parentNode.id);
     setTimeout(()=>{e.target.style.display = "none"}, 0)
   }
 
@@ -85,6 +84,18 @@ export default ({title, dragged, update}) => {
         {title}
       </div>
       <div className="tasks"  >
+        <div>{
+          newData && newData.map((i,idx)=>{
+            return (
+              <div
+              draggable="true" 
+              id={idx} 
+              onDragStart={(e)=>drag(e)} 
+              style={styles.single} 
+              > {i} </div>
+            )
+          })
+        }</div>
         {
         tasks && tasks.map((i,idx) => {
             return (
@@ -99,18 +110,6 @@ export default ({title, dragged, update}) => {
             )
           })
         }
-        <div>{
-          newData && newData.map((i,idx)=>{
-            return (
-              <div
-              draggable="true" 
-              id={idx} 
-              onDragStart={(e)=>drag(e)} 
-              style={styles.single} 
-              > {i} </div>
-            )
-          })
-        }</div>
       </div>
       <div>
       {

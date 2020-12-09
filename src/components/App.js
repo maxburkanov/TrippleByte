@@ -13,7 +13,7 @@ const styles = {
 
 
 export default () => {
-  const arrOfTitles = ["backlog", "Todo", "in-progress", "done"]
+  const arrOfTitles = ["backlog", "Todo", "in-progress", "done", "archive"]
 
   const [dragged, setDragged] = useState([])
  
